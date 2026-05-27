@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="favicon-grad" x1="20" y1="20" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA" />
+      <stop offset="1" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+  <path d="M60 15L98.9711 37.5V82.5L60 105L21.0289 82.5V37.5L60 15Z" fill="#111827" stroke="url(#favicon-grad)" stroke-width="4"/>
+  <circle cx="60" cy="35" r="4" fill="#60A5FA"/>
+  <circle cx="40" cy="50" r="4" fill="#60A5FA"/>
+  <circle cx="80" cy="50" r="4" fill="#A855F7"/>
+  <circle cx="40" cy="70" r="4" fill="#60A5FA"/>
+  <circle cx="80" cy="70" r="4" fill="#A855F7"/>
+  <circle cx="60" cy="85" r="4" fill="#A855F7"/>
+  <circle cx="60" cy="60" r="10" fill="#A855F7" fill-opacity="0.8"/>
+</svg>
