@@ -227,6 +227,8 @@ function OrchestrationCard({ activeAgents = [], id = "AUTH-FLOW-992", isActive =
     )
   ]
 
+  const visibleSteps = steps.filter(step => step.status !== "PENDING DEPENDENCY")
+
   return (
     <div className="w-full mt-4 rounded-xl border border-outline-variant bg-[#111215]/80 overflow-hidden backdrop-blur-md">
       {/* Header bar */}
@@ -242,24 +244,31 @@ function OrchestrationCard({ activeAgents = [], id = "AUTH-FLOW-992", isActive =
       
       {/* Rows */}
       <div className="p-3 divide-y divide-outline-variant/30 space-y-3">
-        {steps.map((step, idx) => (
-          <div key={idx} className="flex items-start justify-between gap-4 pt-3 first:pt-0">
-            <div className="flex gap-3">
-              <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-surface-container border border-outline-variant/50 flex-shrink-0">
-                <span className={`material-symbols-outlined text-[18px] ${step.colorClass}`}>
-                  {step.icon === "database" ? "database" : step.icon === "code" ? "terminal" : step.icon === "auto_awesome" ? "auto_awesome" : "fact_check"}
-                </span>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">{step.name}</div>
-                <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">{step.desc}</div>
-              </div>
-            </div>
-            <span className={`px-2.5 py-0.5 rounded text-[10px] font-bold tracking-wider border shrink-0 ${step.statusColor}`}>
-              {step.status}
-            </span>
+        {visibleSteps.length === 0 ? (
+          <div className="text-center py-4 text-xs text-zinc-500 font-mono flex items-center justify-center gap-2">
+            <span className="material-symbols-outlined text-[14px] animate-spin">sync</span>
+            Initializing delegation flow...
           </div>
-        ))}
+        ) : (
+          visibleSteps.map((step, idx) => (
+            <div key={idx} className="flex items-start justify-between gap-4 pt-3 first:pt-0">
+              <div className="flex gap-3">
+                <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-surface-container border border-outline-variant/50 flex-shrink-0">
+                  <span className={`material-symbols-outlined text-[18px] ${step.colorClass}`}>
+                    {step.icon === "database" ? "database" : step.icon === "code" ? "terminal" : step.icon === "auto_awesome" ? "auto_awesome" : "fact_check"}
+                  </span>
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-white">{step.name}</div>
+                  <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">{step.desc}</div>
+                </div>
+              </div>
+              <span className={`px-2.5 py-0.5 rounded text-[10px] font-bold tracking-wider border shrink-0 ${step.statusColor}`}>
+                {step.status}
+              </span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   )
