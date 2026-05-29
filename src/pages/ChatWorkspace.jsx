@@ -495,7 +495,7 @@ const ChatWorkspace = () => {
         {/* Scrollable Messages Area */}
         <div className="flex-grow overflow-y-auto p-lg flex flex-col gap-xl pb-24 hide-scrollbar">
           {messages.map((message) => {
-            const isActionMode = message.role === 'assistant' && message.id !== 'welcome' && message.status !== 'error';
+            const isActionMode = message.role === 'assistant' && message.id !== 'welcome' && (message.status === 'approved' || message.status === 'needs_review');
 
             return (
               <div
